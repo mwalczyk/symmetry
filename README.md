@@ -1,5 +1,5 @@
 # symmetry
-sparkle A simple tool for making symmetrical drawings. 
+❇️ A simple tool for making symmetrical drawings. 
 
 <p align="center">
   <img src="https://github.com/mwalczyk/symmetry/blob/master/screenshots/screenshot.jpg" alt="screenshot" width="400" height="auto"/>

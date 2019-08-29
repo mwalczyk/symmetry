@@ -5,9 +5,9 @@ let controls = {
   color: '#000000',
   modifyStroke: true
 };
-let gui = new dat.GUI();
-gui.addColor(controls, 'color');
-gui.add(controls, 'modifyStroke')
+// let gui = new dat.GUI();
+// gui.addColor(controls, 'color');
+// gui.add(controls, 'modifyStroke')
 
 // create canvas element and append it to document body
 const canvas = document.createElement('canvas');
@@ -58,8 +58,8 @@ function draw(e) {
 		hue = 0;
 	}
 
-	ctx.strokeStyle = controls.color;
-	// `hsl(${hue}, 100%, 50%)`;
+	//ctx.strokeStyle = controls.color;
+	ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
 	if (controls.modifyStroke) {
 			if (ctx.lineWidth >= strokeSizeBounds.max || ctx.lineWidth <= strokeSizeBounds.min) {

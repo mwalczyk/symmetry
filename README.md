@@ -2,7 +2,7 @@
 ❇️ A simple tool for making symmetrical drawings. 
 
 <p align="center">
-  <img src="https://github.com/mwalczyk/symmetry/blob/master/screenshots/screenshot.jpg" alt="screenshot" width="400" height="auto"/>
+  <img src="https://github.com/mwalczyk/symmetry/blob/master/screenshots/rotational.png" alt="screenshot" width="400" height="auto"/>
 </p>
 
 ## Description

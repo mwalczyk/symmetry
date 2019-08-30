@@ -4,11 +4,14 @@
 // references:
 // 1. https://medium.com/jeremy-keeshin/hello-world-for-javascript-with-npm-modules-in-the-browser-6020f82d1072
 // 2. https://javascript.info/
-// 3.
+// 3. https://www.npmjs.com/package/simplex-noise
 
 // this should work in es6 (something wrong with browserify?)
 //import * as dat from 'dat.gui';
 const dat = require('dat.gui');
+const SimplexNoise = require('simplex-noise');
+
+const simplex = new SimplexNoise();
 
 // setup the gui
 let controls = {
@@ -33,10 +36,9 @@ document.body.appendChild(canvas);
 // get canvas 2D context and set to correct size
 const ctx = canvas.getContext('2d');
 resize();
-setDrawState();
 
 // set up draw state
-let position = { x: 0, y: 0 };
+let position = { x: canvas.width*0.5, y: canvas.height*0.5 };
 const strokeSizeBounds = { min: 1, max: 10 }
 let hue = 0;
 let direction = true;
@@ -50,6 +52,7 @@ document.addEventListener('keypress', clear);
 function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  setDrawState();
 }
 
 function setDrawState() {
@@ -124,12 +127,6 @@ function drawLine(start, end) {
 	ctx.lineTo(end.x, end.y); 
 }
 
-const symmetries = {
-	axial: [],
-	radial: []
-}
-const tranforms = {}
-
 function drawLineWithSymmetry(start, end) {
 	ctx.beginPath();
 
@@ -195,3 +192,61 @@ function fadeDrawing() {
 
 // uncomment to slowly clear the canvas as the user draws
 //setInterval(fadeDrawing, 10);
+
+// let frame = 0;
+// function animateCursor() {
+// 	frame += 1;
+
+// 	var d = new Date();
+//   var n = frame * 0.02;// / 30.0;//position.x * position.y;//d.getMilliseconds();
+
+// 	const freq = 0.1;
+// 	const amp = 200.0;
+// 	const valueX = simplex.noise2D( n * freq, (n + 200.22) * freq) * amp;
+// 	const valueY = simplex.noise2D(-n * freq, (n + 101.11) * freq) * amp;
+	
+// 	const end = { x: valueX + canvas.width * 0.5, y: valueY + canvas.height * 0.5 };
+
+// 	// set the current background color
+// 	canvas.style.backgroundColor = controls.background; 
+
+// 	// is the left mouse button pressed?
+// 	//if (e.buttons !== 1) return;
+
+// 	hue++;
+// 	if (hue >= 360) {
+// 		hue = 0;
+// 	}
+
+// 	// choose brush color
+// 	if (controls.hsvBrush) {
+// 		ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+// 	} else {
+// 		ctx.strokeStyle = '#FFFFFF';
+// 	}
+
+// 	// choose whether or not to animate the line width as the user draws
+// 	if (controls.animateStroke && frame % 8 == 0) {
+			
+// 			if (ctx.lineWidth >= strokeSizeBounds.max || ctx.lineWidth <= strokeSizeBounds.min) {
+// 				direction = !direction;
+// 			}
+// 			if (direction) {
+// 				ctx.lineWidth++;
+// 			} else {
+// 				ctx.lineWidth--;
+
+// 			}
+// 	} else {
+// 		//ctx.lineWidth = strokeSizeBounds.max - 1;
+// 	}
+
+// 	// draw patterns
+//   drawLineWithSymmetry(position, end);
+
+//   // save cursor position
+//   [position.x, position.y] = [end.x, end.y];
+
+//   //requestAnimationFrame(animateCursor);
+// }
+//setInterval(animateCursor, 10);

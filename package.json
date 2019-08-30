@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dat.gui": "^0.7.6"
+    "dat.gui": "^0.7.6",
+    "simplex-noise": "^2.4.0"
   }
 }
